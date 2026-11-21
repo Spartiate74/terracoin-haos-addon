@@ -1,1 +1,33 @@
-#
+name: Peercoin Core
+version: "0.15.15"
+slug: "peercoin"
+description: "Peercoin Core ARM64 avec minting continu"
+arch:
+  - aarch64
+  - amd64
+startup: services
+boot: auto
+init: false
+
+map:
+  - type: homeassistant_config
+    read_only: false
+    path: /config
+
+ports:
+  9901/tcp: 9901
+  9902/tcp: 9902
+
+options:
+  rpcuser: ppc_rpc
+  rpcpassword: ""
+  walletname: android-legacy
+  walletpassphrase: ""
+  minting: false
+
+schema:
+  rpcuser: str
+  rpcpassword: password
+  walletname: str
+  walletpassphrase: password
+  minting: bool
